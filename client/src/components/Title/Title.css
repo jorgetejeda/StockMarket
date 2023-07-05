@@ -1,0 +1,19 @@
+.Title {
+  font-weight: bold;
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+h2 {
+  margin-top: 0px;
+}
+
+.change {
+  display: flex;
+  flex-direction: column;
+}
+
+.timing {
+  color: darkgray;
+}

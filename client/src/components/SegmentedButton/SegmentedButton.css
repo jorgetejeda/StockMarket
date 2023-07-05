@@ -1,0 +1,29 @@
+:root{
+  --color: rgb(75, 192, 192);
+  --color-hover: rgb(75, 192, 192, 0.2);
+}
+
+.segmented-button {
+  display:flex;
+}
+
+.container {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.button {
+  font-weight: bold;
+  padding: 10px 10px 20px 10px;
+  cursor: pointer;
+}
+.button:hover {
+  color: var(--color);
+}
+
+.button.active {
+  color: var(--color);
+  border-bottom: 2px solid var(--color);
+}
+
