@@ -1,6 +1,10 @@
 .Title {
   font-weight: bold;
 }
+.Title .header{
+  display: flex;
+  align-items: center;
+}
 
 h1 {
   margin-bottom: 0px;

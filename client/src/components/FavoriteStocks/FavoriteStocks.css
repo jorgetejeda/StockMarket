@@ -1,0 +1,45 @@
+.FavoriteStocks{
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.FavoriteStocks svg{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.FavoriteStocks .stock{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.FavoriteStocks .stock:hover{
+    cursor: pointer;
+    background: rgb(75, 192, 192);
+    color: white;
+    border: 1px solid rgb(75, 192, 192);
+}
+
+.FavoriteStocks .stock:hover .price{
+  color: white;
+}
+
+.FavoriteStocks .stock .name{
+    font-weight: bold;
+}
+
+.FavoriteStocks .stock .price{
+    font-size: 14px;
+    color: #666;
+}

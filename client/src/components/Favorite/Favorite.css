@@ -1,0 +1,8 @@
+.Favorite:hover{
+  cursor: pointer
+}
+
+.Favorite:hover svg{
+  fill: rgb(75, 192, 192);
+  transform: scale(1.2);
+}

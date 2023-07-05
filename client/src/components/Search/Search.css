@@ -15,6 +15,7 @@ input {
 }
 input:focus {
   outline: none;
+  background: transparent;
 }
 
 .search_button {

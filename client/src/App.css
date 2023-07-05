@@ -1,12 +1,21 @@
 .App {
   margin: 20px auto;
-  width: 70%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100vh;
 }
 
-.not-found{
-  text-align: center;
-  font-size: 18px;
+.App .stocks{
+  display: flex;
+  gap: 30px;
+}
+
+.App .stocks > *:first-child {
+  flex: 3;
+}
+
+.App .stocks > *:last-child {
+  flex: 1;
 }

@@ -5,6 +5,8 @@ import Search from './components/Search/Search'
 import Title from './components/Title/Title'
 import LineChart from './components/LineChart/LineChart'
 import SegmentedButton from './components/SegmentedButton/SegmentedButton';
+import NotFound from './components/NotFound/NotFound';
+import FavoriteStocks from './components/FavoriteStocks/FavoriteStocks';
 
 import './App.css';
 
@@ -15,6 +17,7 @@ export default function App() {
   const [search, setSearch] = useState('PYPL');
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [favorite, setFavorite] = useState([]);
 
   const getStock = async () => {
     setLoading(true);
@@ -34,6 +37,7 @@ export default function App() {
         throw new Error(response.data.error);
       }
 
+      setNotFound(false);
       setData(response.data);
     } catch (error) {
       console.error(error);
@@ -45,7 +49,6 @@ export default function App() {
     getStock();
   }, [timestamps, search]);
 
-
   return (
     <div className="App">
       <Search
@@ -53,21 +56,32 @@ export default function App() {
         loading={loading}
         setSearch={setSearch}
       />
-      {notFound && <div className="not-found">Stock not found</div>}
-      <Title
-        symbol={data.symbol}
-        priceToday={data.priceToday}
-        regularMarketPrice={data.regularMarketPrice}
-      />
-      <LineChart
-        timestamps={data.timestamps}
-        volumens={data.volumens}
-      />
-      <SegmentedButton
-        range={data.validRanges}
-        activeRange={data.range}
-        setTimestamps={setTimestamps}
-      />
+      {notFound ? (<div className='stocks'><NotFound /><FavoriteStocks stocks={favorite} search={setSearch} /></div>) : (<>
+        <div className='stocks'>
+          <div className="chart-container">
+            <Title
+              symbol={data.symbol}
+              priceToday={data.priceToday}
+              regularMarketPrice={data.regularMarketPrice}
+              setFavorite={setFavorite}
+              favorite={favorite}
+              emptyData={data.empty}
+            />
+            <LineChart
+              timestamps={data.timestamps}
+              volumens={data.volumens}
+            />
+          </div>
+          <div className="stocks-container">
+            <FavoriteStocks stocks={favorite} search={setSearch} />
+          </div>
+        </div>
+        <SegmentedButton
+          range={data.validRanges}
+          activeRange={data.range}
+          setTimestamps={setTimestamps}
+        />
+      </>)}
     </div>
   );
 }
