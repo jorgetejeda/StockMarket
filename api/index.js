@@ -14,18 +14,16 @@ app.use(express.json())
 const getPrice = (data) => {
   const { regularMarketPrice, chartPreviousClose } = data;
 
-  console.log(regularMarketPrice, chartPreviousClose)
-
   if(!regularMarketPrice || !chartPreviousClose) return;
 
   const diff = regularMarketPrice - chartPreviousClose;
   const percentage = (diff / chartPreviousClose) * 100;
 
   const sign = diff >= 0 ? "+" : "-";
-  const diffFormat = Number(diff).toFixed(2);
-  const percentageFormat = Number(percentage).toFixed(2);
+  const diffFormat = diff.toFixed(2);
+  const percentageFormat = percentage.toFixed(2);
 
-  return `${sign}$${diffFormat} (${sign}${percentageFormat}%)`;
+  return `${sign}$${diffFormat.replace('-','')} (${sign}${percentageFormat.replace('-','')}%)`;
 }
 
 app.get('/', (req, res) => {
