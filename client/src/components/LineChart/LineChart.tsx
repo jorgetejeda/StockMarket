@@ -21,7 +21,12 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({timestamps, volumens}) => {
+type LineChartProps = {
+  timestamps: number[];
+  volumens: number[];
+}
+
+const LineChart: React.FC<LineChartProps> = ({timestamps, volumens}) => {
   const options = {
     type: 'line',
     backgroundColor: "black",
